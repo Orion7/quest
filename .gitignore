@@ -1,3 +1,16 @@
+build/
+*.iml
+*.iws
+*.ipr
+*.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+.gradle
+.idea
+**/local/*.properties
+**/local/logback.xml
+**.log
+
+### Gradle ###
 .gradle
 /build/
 
@@ -12,3 +25,30 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+# End of https://www.gitignore.io/api/java,gradle
+
+#debuild
+*/debian/*.log
+*/debian/files
+*/debian/postinst.debhelper
+*/debian/postrm.debhelper
+*/debian/substvars
+*/debian/tmp/
+
+#build deb result
+/*.dsc
+/*.tar.gz
+/*.deb
+/*.rpm
+/*.build
+/*.changes
+/*.upload
+*/debian/yandex-*
+!*/debian/*monrun
+!*/debian/*init
+*/debian/debhelper-build-stamp
+out
+.gradletasknamecache
+dataSources
+classes/

@@ -638,7 +638,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/bdquest/HelloWorld.java" />
         <option value="$PROJECT_DIR$/src/main/java/bdquest/Greeter.java" />
-        <option value="$USER_HOME$/workspace/bdquestfront/index.html" />
+        <option value="$PROJECT_DIR$/../bdquestfront/index.html" />
         <option value="$USER_HOME$/Sites/www/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/bdquest/Greeting.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/result.html" />
@@ -1073,7 +1073,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bdquest/Greeter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/bdquest/HelloWorld.java" />
-    <entry file="file://$USER_HOME$/workspace/bdquestfront/index.html">
+    <entry file="file://$PROJECT_DIR$/../bdquestfront/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" selection-start-line="5" selection-end-line="13" selection-end-column="9" />
