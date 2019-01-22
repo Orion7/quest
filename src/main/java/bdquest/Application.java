@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 @ComponentScan
 @EnableAutoConfiguration
@@ -18,13 +17,10 @@ public class Application implements CommandLineRunner {
     }
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    @Autowired
     DbRepository dbRepository;
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
         dbRepository.initDb();
     }
 }

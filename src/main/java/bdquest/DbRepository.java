@@ -52,12 +52,12 @@ public class DbRepository {
     public void initDb() {
         log.info("Creating tables");
 
-        jdbcTemplate.execute("DROP TABLE persons IF EXISTS");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS persons");
         jdbcTemplate.execute("CREATE TABLE persons(" +
                 "id SERIAL, name VARCHAR(255), alco_type VARCHAR(255), " +
                 "soft_type VARCHAR (255), drink_id integer )");
 
-        jdbcTemplate.execute("DROP TABLE drinks IF EXISTS");
+        jdbcTemplate.execute("DROP TABLE IF EXISTS drinks");
         jdbcTemplate.execute("CREATE TABLE drinks(" +
                 "id SERIAL, name VARCHAR(255), alco_type VARCHAR(255), " +
                 "soft_type VARCHAR (255), location VARCHAR (255), is_available BOOLEAN DEFAULT TRUE)");

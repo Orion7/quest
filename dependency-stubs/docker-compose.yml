@@ -1,0 +1,14 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:alpine
+    ports:
+      - '15800:5432'
+    environment:
+      POSTGRES_DB: quest
+      POSTGRES_USER: quest
+      POSTGRES_PASSWORD: quest
+
+
+
+
