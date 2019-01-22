@@ -15,7 +15,7 @@ apply plugin: 'io.spring.dependency-management'
 
 bootJar {
     baseName = 'gs-spring-boot'
-    version =  '0.1.0'
+    version = '0.1.0'
 }
 
 repositories {
@@ -27,6 +27,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.liquibase:liquibase-core")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.1.1.RELEASE'
