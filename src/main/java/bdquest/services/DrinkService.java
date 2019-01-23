@@ -1,4 +1,4 @@
-package bdquest.models.services;
+package bdquest.services;
 
 import bdquest.DbRepository;
 import bdquest.models.Drink;
@@ -20,13 +20,13 @@ public class DrinkService {
     public Drink findDrinkByParams(Person person) {
         List<Drink> allDrinksByAlcoType = dbRepository.findAvailableDrinksByParams(person.getAlcoholType());
 
-        if(allDrinksByAlcoType.isEmpty()) {
+        if (allDrinksByAlcoType.isEmpty()) {
             return null;
         }
 
         Optional<Drink> optionalDrink = allDrinksByAlcoType.stream()
-                .filter(drink -> drink.getSoftDrinkType() == person.getSoftDrinkType())
-                .findFirst();
+            .filter(drink -> drink.getSoftDrinkType() == person.getSoftDrinkType())
+            .findFirst();
 
         Drink calculatedDrink = optionalDrink.orElse(getRandomDrinkFromList(allDrinksByAlcoType));
         setDrinkToPerson(calculatedDrink.getId(), person.getName());

@@ -75,12 +75,12 @@ public class Drink {
     @Override
     public String toString() {
         return "Drink{" +
-                "id=" + id +
-                ", name=" + name +
-                ", alcoholType=" + alcoholType +
-                ", softDrinkType=" + softDrinkType +
-                ", location=" + location +
-                ", isAvailable=" + isAvailable +
-                "}";
+            "id=" + id +
+            ", name=" + name +
+            ", alcoholType=" + alcoholType +
+            ", softDrinkType=" + softDrinkType +
+            ", location=" + location +
+            ", isAvailable=" + isAvailable +
+            "}";
     }
 }

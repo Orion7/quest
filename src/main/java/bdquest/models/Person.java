@@ -65,11 +65,11 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", drinkId=" + drinkId +
-                ", name=" + name +
-                ", alcoholType=" + alcoholType +
-                ", softDrinkType=" + softDrinkType +
-                "}";
+            "id=" + id +
+            ", drinkId=" + drinkId +
+            ", name=" + name +
+            ", alcoholType=" + alcoholType +
+            ", softDrinkType=" + softDrinkType +
+            "}";
     }
 }
