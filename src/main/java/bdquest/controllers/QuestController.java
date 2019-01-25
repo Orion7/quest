@@ -6,14 +6,15 @@ import bdquest.services.PartyManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
 
 @Controller
 public class QuestController {
@@ -25,10 +26,11 @@ public class QuestController {
     PartyManagementService partyManagementService;
 
 
-    @GetMapping(value = "/image")
-    public @ResponseBody byte[] getImage() throws IOException {
-        InputStream in = ClassLoader.getSystemResourceAsStream("images/kot.jpg");
-        return new byte[in.available()];
+    @RequestMapping(value = "/image{imageName}")
+    @ResponseBody
+    public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
+        File serverFile = new File("./src/main/resources/images/" + imageName + ".jpg");
+        return Files.readAllBytes(serverFile.toPath());
     }
 
     @RequestMapping(value = "/greeting", method = RequestMethod.GET)
