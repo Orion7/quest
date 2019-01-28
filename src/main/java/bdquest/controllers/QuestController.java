@@ -26,7 +26,7 @@ public class QuestController {
     PartyManagementService partyManagementService;
 
 
-    @RequestMapping(value = "/image{imageName}")
+    @RequestMapping(value = "/image/{imageName}")
     @ResponseBody
     public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
         File serverFile = new File("./src/main/resources/images/" + imageName + ".jpg");
@@ -58,7 +58,6 @@ public class QuestController {
 
     @RequestMapping(value = "/findDrink", method = RequestMethod.POST)
     public String findDrink(@ModelAttribute Person person, Model model) {
-        model.addAttribute("person", person);
-        return "drink_locations";
+        return partyManagementService.getDrinkLocations(person, model);
     }
 }

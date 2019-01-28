@@ -251,7 +251,7 @@
                                             class="font-header spans xs-force-center textable gray-theme"><span
                                             style="font-size: 34px; text-align: center;" class="p"><span
                                             style="font-size: 48px;color: rebeccapurple"
-                                            th:text="'Успех!'"></span></span>
+                                            th:text="'На поиски!'"></span></span>
                                     </h2>
                                     </div>
                                 </div>
@@ -263,14 +263,10 @@
                                     <div class="flex">
                                         <div class="xs-force-center textable gray-theme" style="opacity: 0.5;">
                                             <p style="font-size: 110%; text-align: center;">
-                                                <span style="color: rgb(0, 0, 0);"><span style="font-size: 20px;">Тебе достался коктейль...</span></span>
+                                                <span style="color: rgb(0, 0, 0);"><span style="font-size: 20px;">Вот локации твоего напитка.</span></span>
                                             </p>
                                             <p style="font-size: 110%; text-align: center;">
-                                                <span style="font-style: italic; color: rgba(255, 0, 255, 1); font-size: 26px;"><span
-                                                        th:text="${drink.name} + '!'"></span></span>
-                                            </p>
-                                            <p style="font-size: 110%; text-align: center;">
-                                                <span style="color: rgb(0, 0, 0);"><span style="font-size: 20px;">Теперь нужно его найти! Ты готов?</span></span>
+                                                <span style="color: rgb(0, 0, 0);"><span style="font-size: 20px;"  th:text="'Ищи стакан с номером ' + ${person.drinkId}"></span></span>
                                             </p>
                                         </div>
                                     </div>
@@ -300,7 +296,11 @@
                                                                                         <div class="inner">
                                                                                             <div class="vertical none size-big">
                                                                                                 <div class="body">
-                                                                                                    <div class="cont"></div>
+                                                                                                    <div class="cont">
+                                                                                                        <tr th:each="location : ${locations}">
+                                                                                                            <img style="margin-bottom: 25px" th:src="@{'/image/' + ${location}}" width="100%">
+                                                                                                        </tr>
+                                                                                                    </div>
                                                                                                     <form class="form text-in"
                                                                                                           action="#"
                                                                                                           th:action="@{/findDrink}"

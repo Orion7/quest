@@ -59,4 +59,11 @@ public class PartyManagementService {
         model.addAttribute("person", person);
         return "alco_test";
     }
+
+    public String getDrinkLocations(@ModelAttribute Person person, Model model) {
+        model.addAttribute("person", person);
+        model.addAttribute("locations", dbRepository.findDrinkLocations(person.getDrinkId()));
+        return "drink_locations";
+    }
+
 }

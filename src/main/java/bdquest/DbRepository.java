@@ -15,6 +15,11 @@ public class DbRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    public List<String> findDrinkLocations(Integer drinkId) {
+        return jdbcTemplate.query("SELECT * FROM drink_locations WHERE drink_id=" + drinkId,
+            (rs, rowNum) -> rs.getString("image"));
+    }
+
     public void setDrinkToPerson(String name, Integer drinkId) {
         jdbcTemplate.execute("UPDATE persons SET drink_id=" + drinkId +
             " WHERE name='" + name + "'");
