@@ -33,6 +33,13 @@ public class DrinkService {
         return calculatedDrink;
     }
 
+    public Drink getRandomAvailableDrink(Person person) {
+        List<Drink> allAvailableDrinks = dbRepository.findAllAvailableDrinks();
+        Drink randomDrinkFromList = getRandomDrinkFromList(allAvailableDrinks);
+        setDrinkToPerson(randomDrinkFromList.getId(), person.getName());
+        return randomDrinkFromList;
+    }
+
     private Drink getRandomDrinkFromList(List<Drink> allDrinksByAlcoType) {
         int randomNum = ThreadLocalRandom.current().nextInt(0, allDrinksByAlcoType.size());
         return allDrinksByAlcoType.get(randomNum);

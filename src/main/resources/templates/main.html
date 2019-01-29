@@ -4,9 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/vendors.css"></link>
-    <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/plp.css"></link>
-    <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/nodes.css"></link>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/vendors.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/plp.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/nodes.css}"/>
 
 </head>
 <body class="area ">
@@ -144,7 +144,7 @@
 
     .node118 > .wrapper1 > .wrapper2 {
         background-color: rgba(0, 0, 0, 0);
-        padding-top: 60px;
+        padding-top: 28px;
         padding-bottom: 90px
     }
 
@@ -297,14 +297,24 @@
                                                                                                         <div class="macros-button">
                                                                                                             <div class="btn-out full xs-none">
                                                                                                                 <div class="btn-inner">
-                                                                                                                    <button class="btn font-text submit"
+                                                                                                                    <button name="action" value="adjust"
+                                                                                                                            style="margin-bottom: 8px"
+                                                                                                                            class="btn font-text submit"
+                                                                                                                                     id="uid26"
+                                                                                                                                     data-ym_goal=""
+                                                                                                                                     data-ga_category=""
+                                                                                                                                     data-ga_action=""
+                                                                                                                                     need_hover="false">
+                                                                                                                        <span class="text">Подобрать</span>
+                                                                                                                    </button>
+                                                                                                                    <button name="action" value="random"
+                                                                                                                            class="btn font-text submit"
                                                                                                                             id="uid26"
                                                                                                                             data-ym_goal=""
                                                                                                                             data-ga_category=""
                                                                                                                             data-ga_action=""
                                                                                                                             need_hover="false">
-                                                                                                                        <span class="text">Поехали</span><input
-                                                                                                                            type="submit">
+                                                                                                                        <span class="text">Выбрать случайно</span>
                                                                                                                     </button>
                                                                                                                 </div>
                                                                                                             </div>

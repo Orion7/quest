@@ -4,9 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/vendors.css"></link>
-    <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/plp.css"></link>
-    <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/nodes.css"></link>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/vendors.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/plp.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/nodes.css}"/>
 
 </head>
 <body class="area ">
@@ -155,7 +155,7 @@
 
         .node118 > .wrapper1 > .wrapper2 {
             background-color: rgba(0, 0, 0, 0);
-            padding-top: 60px;
+            padding-top: 28px;
             padding-bottom: 90px
         }
 
@@ -266,7 +266,7 @@
                                                 <span style="color: rgb(0, 0, 0);"><span style="font-size: 20px;">Тебе достался коктейль...</span></span>
                                             </p>
                                             <p style="font-size: 110%; text-align: center;">
-                                                <span style="font-style: italic; color: rgba(255, 0, 255, 1); font-size: 26px;"><span
+                                                <span style="font-weight:bold; color: rgba(255, 0, 255, 1); font-size: 26px;"><span
                                                         th:text="${drink.name} + '!'"></span></span>
                                             </p>
                                             <p style="font-size: 110%; text-align: center;">

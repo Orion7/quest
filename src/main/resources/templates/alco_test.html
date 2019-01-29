@@ -4,9 +4,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/vendors.css"></link>
-  <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/plp.css"></link>
-  <link type="text/css" rel="stylesheet" href="//s.filesonload.ru/assets/3.3/nodes.css"></link>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/vendors.css}"/>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/plp.css}"/>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/nodes.css}"/>
 
 </head>
 <body class="area ">
@@ -155,7 +155,7 @@
 
     .node118 > .wrapper1 > .wrapper2 {
       background-color: rgba(0, 0, 0, 0);
-      padding-top: 60px;
+      padding-top: 28px;
       padding-bottom: 90px
     }
 
@@ -307,51 +307,18 @@
                                                         th:object="${person}"
                                                         method="post">
                                                     <div style="margin-bottom: 25px;">
-                                                      <div class="center">
-                                                        <input class="text"
-                                                               type="radio"
-                                                               th:field="*{alcoholType}"
-                                                               data-placeholder="true"
-                                                               value="GIN"
-                                                               style="border-radius: 5px; margin: 2px; ">
-                                                        Джин<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text"
-                                                               type="radio"
-                                                               th:field="*{alcoholType}"
-                                                               data-placeholder="true"
-                                                               value="VODKA"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Водка<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text"
-                                                               type="radio"
-                                                               th:field="*{alcoholType}"
-                                                               data-placeholder="true"
-                                                               value="WHISKEY"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Виски<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text"
-                                                               type="radio"
-                                                               th:field="*{alcoholType}"
-                                                               data-placeholder="true"
-                                                               value="JAGER"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Ягермейстер<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text"
-                                                               type="radio"
-                                                               th:field="*{alcoholType}"
-                                                               data-placeholder="true"
-                                                               value="SECRET"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Секретный<br>
-                                                      </div>
+                                                      <tr th:each="alco : ${alcos}">
+                                                        <div class="center">
+                                                          <input class="text"
+                                                                type="radio"
+                                                                th:field="*{alcoholType}"
+                                                                 data-placeholder="true"
+                                                                 th:value="${alco}"
+                                                                 th:text="${alco.name}"
+                                                                 style="border-radius: 5px; margin: 2px; ">
+                                                          <br>
+                                                        </div>
+                                                      </tr>
                                                     </div>
                                                     <input class="form-control text"
                                                            type="text"
