@@ -12,6 +12,13 @@
 <body class="area ">
 <div class="area font-text-opensans font-header-ttnormsmedium">
   <style>
+
+    .radio-span {
+      padding: 3px;
+      vertical-align: bottom;
+      display: inline;
+    }
+
     .center {
       margin-left: 21px;
       margin-bottom: 8px;
@@ -314,9 +321,8 @@
                                                                 th:field="*{alcoholType}"
                                                                  data-placeholder="true"
                                                                  th:value="${alco}"
-                                                                 th:text="${alco.name}"
-                                                                 style="border-radius: 5px; margin: 2px; ">
-                                                          <br>
+                                                                 style="border-radius: 5px; margin-bottom: 10px; vertical-align: bottom;">
+                                                          <div class="radio-span"><span th:text="${alco.name}"></span></div>
                                                         </div>
                                                       </tr>
                                                     </div>
