@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres:alpine
     ports:
-      - '15800:5432'
+      - '15900:5432'
     environment:
       POSTGRES_DB: quest
       POSTGRES_USER: quest

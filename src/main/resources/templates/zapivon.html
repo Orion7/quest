@@ -12,6 +12,14 @@
 <body class="area ">
 <div class="area font-text-opensans font-header-ttnormsmedium">
   <style>
+
+    .radio-span {
+      padding: 3px;
+      vertical-align: bottom;
+      display: inline;
+    }
+
+
     .center {
       margin-left: 21px;
       margin-bottom: 8px;
@@ -303,42 +311,17 @@
                                                         th:object="${person}"
                                                         method="post">
                                                     <div style="margin-bottom: 25px;">
-                                                      <div class="center">
-                                                        <input class="text" type="radio" th:field="*{softDrinkType}"
-                                                               data-placeholder="true" value="JUICE"
-                                                               style="border-radius: 5px; margin: 2px; ">
-                                                        Сок<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text" type="radio" th:field="*{softDrinkType}"
-                                                               data-placeholder="true" value="COKE"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Кола<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text" type="radio" th:field="*{softDrinkType}"
-                                                               data-placeholder="true" value="SPRITE"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Спрайт<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text" type="radio" th:field="*{softDrinkType}"
-                                                               data-placeholder="true" value="REDBULL"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Ред Булл<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text" type="radio" th:field="*{softDrinkType}"
-                                                               data-placeholder="true" value="TONIC"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Тоник<br>
-                                                      </div>
-                                                      <div class="center">
-                                                        <input class="text" type="radio" th:field="*{softDrinkType}"
-                                                               data-placeholder="true" value="SECRET"
-                                                               style="border-radius: 5px; margin: 2px">
-                                                        Секретный<br>
-                                                      </div>
+                                                      <tr th:each="soft : ${softs}">
+                                                        <div class="center">
+                                                          <input class="text"
+                                                                 type="radio"
+                                                                 th:field="*{softDrinkType}"
+                                                                 data-placeholder="true"
+                                                                 th:value="${soft}"
+                                                                 style="border-radius: 5px; margin-bottom: 10px; vertical-align: bottom;">
+                                                          <div class="radio-span"><span th:text="${soft.name}"></span></div>
+                                                        </div>
+                                                      </tr>
                                                     </div>
                                                     <div style="display: none">
                                                       <input th:field="*{name}">

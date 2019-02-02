@@ -4,6 +4,7 @@ import bdquest.DbRepository;
 import bdquest.models.AlcoholType;
 import bdquest.models.Drink;
 import bdquest.models.Person;
+import bdquest.models.SoftDrinkType;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -55,6 +56,7 @@ public class PartyManagementService {
         if (person.getAlcoholType() != null) {
             log.info("{} выбрал {}.", person.getName(), person.getAlcoholType());
             dbRepository.savePerson(person);
+            model.addAttribute("softs", SoftDrinkType.values());
             model.addAttribute("person", person);
             return "zapivon";
         }
