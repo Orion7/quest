@@ -25,8 +25,8 @@ public class DrinkService {
         }
 
         Optional<Drink> optionalDrink = allDrinksByAlcoType.stream()
-            .filter(drink -> drink.getSoftDrinkType() == person.getSoftDrinkType())
-            .findFirst();
+                .filter(drink -> drink.getSoftDrinkType() == person.getSoftDrinkType())
+                .findFirst();
 
         Drink calculatedDrink = optionalDrink.orElse(getRandomDrinkFromList(allDrinksByAlcoType));
         setDrinkToPerson(calculatedDrink.getId(), person.getName());
