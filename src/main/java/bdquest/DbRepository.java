@@ -7,7 +7,6 @@ import bdquest.models.SoftDrinkType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -22,13 +21,11 @@ public class DbRepository {
                 (rs, rowNum) -> rs.getString("image"));
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void setDrinkToPerson(String name, Integer drinkId) {
         jdbcTemplate.execute("UPDATE persons SET drink_id=" + drinkId +
                 " WHERE name='" + name + "'");
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void savePerson(Person person) {
         StringBuilder sb = new StringBuilder("UPDATE persons SET ");
 
@@ -48,22 +45,24 @@ public class DbRepository {
         jdbcTemplate.execute(sb.toString());
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
     public void setAvailability(Integer drinkId) {
         jdbcTemplate.execute("UPDATE drinks SET is_available=FALSE" +
                 " WHERE id=" + drinkId);
     }
 
-    public boolean isInvited(String name) {
-        return !jdbcTemplate.query("SELECT * FROM persons WHERE name ='" + name + "'",
+    public List<Person> getPerson(String name) {
+        return jdbcTemplate.query("SELECT * FROM persons WHERE name ='" + name + "'",
                 (rs, rowNum) -> Person.of(rs.getInt("id"),
                         rs.getString("name"),
-                        null,
-                        null,
-                        null)).isEmpty();
+                        rs.getInt("drink_id"),
+                        AlcoholType.contains(rs.getString("alco_type")) ?
+                                AlcoholType.valueOf(rs.getString("alco_type")) : null,
+                        SoftDrinkType.contains(rs.getString("soft_type")) ?
+                                SoftDrinkType.valueOf(rs.getString("soft_type")) : null));
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
     public List<Drink> findAvailableDrinksByParams(AlcoholType alcoholType) {
         return jdbcTemplate.query("SELECT * FROM drinks WHERE alco_type='" + alcoholType.name() + "'" +
                         " AND is_available=TRUE",
@@ -75,7 +74,18 @@ public class DbRepository {
                         rs.getBoolean("is_available")));
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
+    public List<Drink> findDrinkById(Integer id) {
+        return jdbcTemplate.query("SELECT * FROM drinks WHERE id='" + id + "'",
+                (rs, rowNum) -> Drink.of(rs.getInt("id"),
+                        rs.getString("name"),
+                        AlcoholType.valueOf(rs.getString("alco_type")),
+                        SoftDrinkType.valueOf(rs.getString("soft_type")),
+                        rs.getString("location"),
+                        rs.getBoolean("is_available")));
+    }
+
+    @Transactional
     public List<Drink> findAllAvailableDrinks() {
         return jdbcTemplate.query("SELECT * FROM drinks WHERE is_available=TRUE",
                 (rs, rowNum) -> Drink.of(rs.getInt("id"),

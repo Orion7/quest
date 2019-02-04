@@ -1,5 +1,7 @@
 package bdquest.models;
 
+import java.util.stream.Stream;
+
 public enum SoftDrinkType {
     JUICE("Сок"),
     COKE("Кола"),
@@ -15,5 +17,11 @@ public enum SoftDrinkType {
 
     public String getName() {
         return name;
+    }
+
+
+    public static boolean contains(String value) {
+        return Stream.of(SoftDrinkType.values())
+                .anyMatch(softDrinkType -> softDrinkType.getName().equals(value));
     }
 }

@@ -34,6 +34,16 @@ public class QuestController {
         return partyManagementService.greetingSubmit(person, model);
     }
 
+    @RequestMapping(value = "/menu", method = RequestMethod.POST)
+    public String menu(@ModelAttribute Person person,
+                           @RequestParam(value = "action", required = false) String action, Model model) {
+        if (action != null && action.equals("find")) {
+            return "f";
+        }
+
+        return partyManagementService.alcoTest(person, model);
+    }
+
     @RequestMapping(value = "/alcoTest", method = RequestMethod.POST)
     public String alcoTest(@ModelAttribute Person person,
                            @RequestParam(value = "action", required = false) String action, Model model) {

@@ -25,14 +25,21 @@ public class PartyManagementService {
     @Autowired
     private DrinkService drinkService;
 
-    private boolean isInvited(String name) {
-        return dbRepository.isInvited(name);
-    }
-
     public String greetingSubmit(@ModelAttribute Person person, Model model) {
-        if (isInvited(person.getName())) {
-            log.info("{} подключился!", person.getName());
-            model.addAttribute("person", person);
+        List<Person> personList = dbRepository.getPerson(person.getName());
+        if (!personList.isEmpty()) {
+            Person concretePerson = personList.get(0);
+            log.info("{} подключился!", concretePerson.getName());
+            model.addAttribute("person", concretePerson);
+
+            if (concretePerson.getDrinkId() != 0) {
+                List<Drink> drinkById = dbRepository.findDrinkById(concretePerson.getDrinkId());
+                if (!drinkById.isEmpty()) {
+                    model.addAttribute("drink", drinkById.get(0));
+                    return "find_drink";
+                }
+            }
+
             return "main";
         }
         log.info("{} не приглашен, но пытался подключиться!", person.getName());
