@@ -1,2 +1,2 @@
 # quest
-Simple quest on my birthday
+Simple quest
